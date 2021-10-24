@@ -34,7 +34,7 @@ int main() {
         done:
         cur_time += t2;
         sum = sum + (cur_time - timecall);
-        cout << cur_time << ' ' << cur_time - timecall << '\n';
+        //cout << cur_time << ' ' << cur_time - timecall << '\n';
     }
     cout << fixed << setprecision(3) << (sum/m);
     return 0;
