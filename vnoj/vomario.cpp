@@ -1,6 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/// NOTE: Understand that a pair<long long,long long> is a line.
+/// NOTE: according to the context, We already know the start point of this line W[i], so we use some math trick to 
+/// NOTE: replicate the second point on this line, we will use x[i] * W[i] why ?
+/// ANS: because x[i] represent for the slope, as you may recorgnize in the context, We know the limit of this line is f[i], the maximum value
+/// ANS: of a line can generate within range (L[i],R[i]). 
+
 const int maxn = 1e5;
 const long long maxc = 1e18;
 int N,M; 
@@ -17,11 +23,11 @@ int find(long long x) {
     return l;
 }
 
-inline long long calc(pair<long long,long long> d,long long x) {
+long long calc(pair<long long,long long> d,long long x) {
     return (d.first*x+d.second);
 }
 
-inline void update(int k,int l,int r,int i,int j,pair<long long,long long> val) {
+void update(int k,int l,int r,int i,int j,pair<long long,long long> val) {
     if (l>j || r<i) return;
     auto mid = (l+r)>>1;
     if (i<=l && r<=j) {

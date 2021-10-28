@@ -1,7 +1,11 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "bitset": "cpp",
+        "memory": "cpp",
+        "random": "cpp",
+        "future": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
