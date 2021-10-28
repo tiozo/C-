@@ -9,12 +9,12 @@ using namespace std;
 
 const int maxn = 1e5;
 const long long maxc = 1e18;
-int N,M; 
+int N; 
 long long st[maxn+1],New[maxn+1],x[maxn+1],e[maxn+1],W[maxn+1],f[maxn+1];
 pair<long long,long long> t[4*maxn+1];
 
-int find(long long x) {
-    int l = 1, r = N;
+inline int find(long long x) {
+    int l = 1, r = N,res;
     while (l<r) {
         int mid = (l+r)>>1;
         if (st[mid]<x) l = mid+1;
@@ -23,11 +23,11 @@ int find(long long x) {
     return l;
 }
 
-long long calc(pair<long long,long long> d,long long x) {
+inline long long calc(pair<long long,long long> d,long long x) {
     return (d.first*x+d.second);
 }
 
-void update(int k,int l,int r,int i,int j,pair<long long,long long> val) {
+inline void update(int k,int l,int r,int i,int j,pair<long long,long long> val) {
     if (l>j || r<i) return;
     auto mid = (l+r)>>1;
     if (i<=l && r<=j) {
@@ -66,22 +66,17 @@ long long query(int k,int l,int r,int i) {
     long long res = calc(t[k],x[i]);
     if (l==r) return res;
     int mid = (l+r)>>1;
-    cout << l << ' ' << mid << ' ' << r << '\n';
     res = max(res,query(k*2,l,mid,i));
     res = max(res,query(k*2+1,mid+1,r,i));
     return res;
 }
 
 void process() {
-    set<long long> s;
-    long long res = -maxc, ans = 0;
+    long long res = -maxc;
     pair<long long,long long> val1,val2;
-    for (int i=1;i<=M;++i) {
+    for (int i=1;i<=N;++i) {
         f[i] = query(1,1,N,i)+e[i];
         res = max(res,f[i]);
-        cout << res << '\n';
-        if (res>0 && s.count(res)==0) ans += res,s.insert(res);
-        assert(res>=0);
         val1.first = W[i];
         val1.second = f[i]-W[i]*x[i];
         update(1,1,N,1,New[i],val1);
@@ -89,20 +84,19 @@ void process() {
         val2.second = f[i]+W[i]*x[i];
         update(1,1,N,New[i],N,val2);
     }
-    cout << res << ' ' << ans;
+    cout << res;
 }
 
 int main() {
     ios_base::sync_with_stdio(false); cin.tie(0);
-    cin >> N >> M;
-    for (int i=1;i<=M;++i) {
+    cin >> N;
+    for (int i=1;i<=N;++i) {
         cin >> x[i] >> W[i] >> e[i];
         st[i] = x[i];
     }
-    sort(st+1,st+1+M);
-    for (int i=1;i<=M;++i) {
+    sort(st+1,st+1+N);
+    for (int i=1;i<=N;++i) {
         New[i] = find(x[i]);
-        //cout << New[i] << ' ' << x[i] << '\n';
     }
     process();
     //return 0;
