@@ -58,12 +58,29 @@ struct dsu {
 
 /// ANNOUNCE: end of template
 
+const double esp = 1e-9;
+
 void solve() {
-    
+    int n; cin >> n;
+    vector<int> a(n);
+    double sum = 0;
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+        sum += a[i];
+    }
+    sum /= n;
+    int idx = 0;
+    double mindiff = abs(a[0] - sum);
+    for (int i = 1; i < n; ++i) {
+        if (abs(a[i] - sum) + esp < mindiff) {
+            idx = i; mindiff = abs(a[i] - sum);
+        }
+    }
+    cout << idx << '\n';
 }
 
 int main() {
-    int tc; cin >> tc;
+    int tc = 1;
     while (tc--) {
         solve();
     }

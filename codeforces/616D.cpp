@@ -58,12 +58,36 @@ struct dsu {
 
 /// ANNOUNCE: end of template
 
+const int maxn = 1e6 + 10;
+int a[maxn], cnt[maxn];
+
 void solve() {
-    
+    int n, k; scanf("%d%d",&n, &k);
+    for (int i = 0; i < n; ++i) {
+        scanf("%d", a + i);
+        //cout << a[i] << '\n';
+    }
+    int tmp = 0, L = -1, R = -1, j = 0;
+    memset(cnt, 0, sizeof cnt);
+    for (int i = 0; i < n; ++i) {
+        while (j < n) {
+            if (++cnt[a[j]] == 1) tmp++;
+            if (tmp > k) {
+                if (--cnt[a[j]] == 0) tmp--;
+                break;
+            }
+            j++;
+        }
+        if (R - L < j - i) {
+            L = i, R = j;
+        }
+        if (--cnt[a[i]] == 0) tmp--;
+    }
+    cout << L + 1 << ' ' << R << '\n';
 }
 
 int main() {
-    int tc; cin >> tc;
+    int tc = 1;
     while (tc--) {
         solve();
     }

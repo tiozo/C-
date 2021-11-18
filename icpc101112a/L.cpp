@@ -58,12 +58,24 @@ struct dsu {
 
 /// ANNOUNCE: end of template
 
+const int maxn = 5;
+int cnt[maxn];
+
 void solve() {
-    
+    for (int i = 1; i <= 3; ++i) {
+        int u, v; cin >> u >> v;
+        cnt[u]++, cnt[v]++;
+    }
+    for (int i = 1; i <= 4; ++i) {
+        if (cnt[i] > 2) {
+            cout << "NO\n"; return;
+        }
+    }
+    cout << "YES\n";
 }
 
 int main() {
-    int tc; cin >> tc;
+    int tc = 1;
     while (tc--) {
         solve();
     }

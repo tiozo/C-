@@ -59,7 +59,23 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    int n; cin >> n;
+    string s; cin >> s;
+    if (is_sorted(s.begin(), s.end())) {
+        cout << "0\n";
+        return;
+    }
+    string t = s;
+    sort(t.begin(), t.end());
+    cout << 1 << '\n';
+    queue<int> q;
+    for (int i = 0; i < n; ++i) {
+        if (s[i] != t[i]) {
+            q.push(i);
+        }
+    }
+    cout << q.size() << ' ';
+    while (!q.empty()) cout << q.front() + 1 << ' ', q.pop();
 }
 
 int main() {

@@ -59,7 +59,12 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    int x,y; cin >> x >> y;
+    if (x <= y) {
+        cout << y - y % x / 2 << '\n';
+    } else {
+        cout << x + y << '\n';
+    }
 }
 
 int main() {

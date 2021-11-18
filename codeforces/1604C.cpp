@@ -59,7 +59,24 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    int n; cin >> n;
+    bool ok = true;
+    for (int i=1; i<=n; ++i) {
+        int x; cin >> x;
+        bool found = false;
+        for (int j=i+1; j>=2; --j) {
+            if (x % j) {
+                found = true;
+                break;
+            }
+        }
+        ok &= found;
+    }
+    if (ok) {
+        cout << "YES\n";
+    } else {
+        cout << "NO\n";
+    }
 }
 
 int main() {

@@ -59,7 +59,14 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    ll n,k; cin >> n >> k;
+    ll ans = 0, cur = 1;
+    while (cur < k) {
+        cur *= 2;
+        ++ans;
+    }
+    if (cur < n)  ans += (n - cur + k - 1) / k;
+    cout << ans << '\n';
 }
 
 int main() {

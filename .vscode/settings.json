@@ -5,7 +5,12 @@
         "bitset": "cpp",
         "memory": "cpp",
         "random": "cpp",
-        "future": "cpp"
+        "future": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp",
+        "cstdlib": "cpp",
+        "*.tcc": "cpp",
+        "iosfwd": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

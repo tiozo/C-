@@ -5,14 +5,6 @@ using ll = long long;
 
 const int mod = 1e9 + 7;
 
-void read() {}
-
-template<typename First, typename ...Rest>
-void read(First& first, Rest&... rest) {
-    cin >> first;
-    read(rest...);
-}
-
 template<class X,class Y>
 void add(X &x,Y y) {
     x = (x + y) % mod;
@@ -58,12 +50,17 @@ struct dsu {
 
 /// ANNOUNCE: end of template
 
+ll a,b;
+int d,k;
+
+ll dp[25][25][25];
+
 void solve() {
     
 }
 
 int main() {
-    int tc; cin >> tc;
+    int tc = 1;
     while (tc--) {
         solve();
     }

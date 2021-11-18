@@ -1,4 +1,6 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<algorithm>
 
 using namespace std;
 using ll = long long;
@@ -59,11 +61,22 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    int n, k; cin >> n >> k;
+    vector<int> a(n+1);
+    for (int i = 1; i <= n; ++i) {
+        cin >> a[i];
+    }
+    sort(a.begin() + 1, a.end());
+    ll ans = 0;
+    //cout << n - k << '\n';
+    for (int i = 1; i <= n-k; ++i) {
+        ans += a[i];
+    }
+    cout << ans << '\n';
 }
 
 int main() {
-    int tc; cin >> tc;
+    int tc = 1;
     while (tc--) {
         solve();
     }

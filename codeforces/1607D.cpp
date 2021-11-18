@@ -59,7 +59,27 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    int n; cin >> n;
+    vector<int> a(n);
+    for (int i=0;i<n;++i) cin >> a[i];
+    string s; cin >> s;
+    bool flag = true;
+    for (int i=0;i<n;++i) {
+        if ((s[i]=='R' && a[i] >= n)) {
+            flag = false; break;
+        }
+    }
+    if (flag) {
+        int allfalse = 0;
+        for (int i=0;i<n;++i) {
+            if (s[i]=='B' && a[i]<=1) {
+                ++allfalse;
+            }
+        }
+        cout << "IN" << '\n';
+        if (allfalse>n) cout << "YES\n";
+        else cout << "NO\n";
+    } else cout << "NO\n";
 }
 
 int main() {

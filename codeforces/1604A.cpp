@@ -59,7 +59,14 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    int n; cin >> n;
+    vector<int> a(n+1,0);
+    int maxdif = 0;
+    for (int i=1;i<=n;++i) {
+        cin >> a[i];
+        maxdif = max(maxdif,a[i]-i);
+    }
+    cout << maxdif << '\n';
 }
 
 int main() {

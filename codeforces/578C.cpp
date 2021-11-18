@@ -58,12 +58,47 @@ struct dsu {
 
 /// ANNOUNCE: end of template
 
+const double eps = 1e-9;
+
+double msc(vector<double> &a) {
+    double mx = 0, now = 0;
+    for (int i = 0; i < a.size(); ++i) {
+        now += a[i];
+        if (now > mx + eps) mx = now;
+        if (now + eps < 0) now = 0;
+    }
+    return mx;
+}
+
+void calc(double m, vector<double> &a, double &v1, double &v2) {
+    auto b = vector<double>(a.size());
+    for (int i = 0; i < a.size(); ++i) b[i] = a[i] - m;
+    v1 = msc(b);
+    for (int i = 0; i < a.size(); ++i) b[i] *= -1;
+    v2 = msc(b);
+    //return v1;
+}
+
+
 void solve() {
-    
+    int n; cin >> n;
+    vector<double> a(n);
+    for (double i : a) cin >> i;
+    double L = -1e9, R = 1e9;
+    for (int i = 0; i < 100; ++i) {
+        double mid = (L + (R - L) / 2), prev, cur;
+        calc(mid, a, cur, prev);
+        cout << cur << ' ' << prev << '\n';
+        if (cur > prev) L = mid;
+        else R = mid;
+    }
+    double mid = (L + (R - L) / 2), prev, cur;
+    calc(mid, a, cur, prev);
+    cout << double(max(cur, prev));
 }
 
 int main() {
-    int tc; cin >> tc;
+    int tc = 1;
     while (tc--) {
         solve();
     }

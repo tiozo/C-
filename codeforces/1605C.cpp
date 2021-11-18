@@ -59,7 +59,22 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    int n; cin >> n;
+    string s; cin >> s;
+    int ans = 1e9;
+    for (int i = 0; i < n; ++i) {
+        vector<int> f(3, 0);
+        f[s[i] - 'a']++;
+        for (int j = i + 1; j < min(n, i + 7); ++j) {
+            f[s[j] - 'a']++;
+            if (f[0] > f[1] && f[0] > f[2]) 
+                ans = min(ans, j - i + 1);
+        }
+    }
+    if (ans == 1e9) {
+        ans = -1;
+    }
+    cout << ans << '\n';
 }
 
 int main() {

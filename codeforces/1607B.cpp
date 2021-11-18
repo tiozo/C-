@@ -59,7 +59,14 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    ll x,n; cin >> x >> n;
+    ll mid = n % 2 == 0 ? n / 2 : (n + 1) / 2;
+    //cout << mid << '\n';
+    if (x % 2) {
+        cout << x + mid << '\n';
+    } else {
+        cout << x - mid << '\n';
+    }
 }
 
 int main() {
@@ -69,3 +76,18 @@ int main() {
     }
     return 0;
 }
+
+/*
+    x % 2 
+    x even = 10 
+    n % 2
+    n even = 50
+
+    - + - + - + then it n/2 * -1
+    + - + - + -
+
+    x odd 
+
+    - + - + - + - (-)
+    + - + - + - +
+*/

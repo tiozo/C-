@@ -59,7 +59,18 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    int n; cin >> n;
+    vector<int> a(n+1,0);
+    bool ok = true;
+    for (int i=1;i<=n;++i) {
+        cin >> a[i];
+        ok &= a[i] > a[i-1];
+    }
+    if ((n % 2 == 0) || !ok) {
+        cout << "YES\n";
+    } else {
+        cout << "NO\n";
+    }
 }
 
 int main() {

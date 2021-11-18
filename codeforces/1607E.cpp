@@ -59,7 +59,20 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    int height,width; cin >> height >> width;
+    string s; cin >> s;
+    int x = 0, y = 0;
+    for (int i=0; i<s.size(); ++i) {
+        if (s[i]=='L') --x;
+        else if (s[i]=='R') ++x;
+        else if (s[i]=='U') --y;
+        else if (s[i]=='D') ++y;
+    }
+    int a = height - abs(y);
+    int b = width - abs(x);
+    if (a>=1 && a<=height && b>=1 && b<=width)
+        cout << a << ' ' << b << '\n';
+    else cout << height << ' ' << width << '\n';
 }
 
 int main() {
@@ -69,3 +82,10 @@ int main() {
     }
     return 0;
 }
+
+/*
+    x > 0 y < 0
+    2 3
+    2 3
+    xx
+*/

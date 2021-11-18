@@ -59,13 +59,20 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
+    int n; cin >> n;
+    int ans = 0;
     
 }
 
 int main() {
-    int tc; cin >> tc;
+    int tc = 1;
     while (tc--) {
         solve();
     }
     return 0;
 }
+
+/*
+    n nn nxn nxxn nxxxn nxxxxn 
+    5 55 5x5 5xx5 5xxx5 5xxxx5
+*/

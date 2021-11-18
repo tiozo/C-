@@ -59,13 +59,23 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    string s; cin >> s;
+    int n = s.size() - 1;
+    if (s[0]==s[n]) cout << s << '\n';
+    else s[n] = ((s[n]-'a')^1) + 'a', cout << s << '\n';
 }
 
 int main() {
+    ios::sync_with_stdio(false); cin.tie(0);
     int tc; cin >> tc;
     while (tc--) {
         solve();
     }
     return 0;
 }
+
+/*
+    aabbaabbaaaaa
+    ab ba ab ba
+    
+*/

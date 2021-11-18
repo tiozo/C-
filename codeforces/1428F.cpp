@@ -9,13 +9,13 @@ void IOS() {
 
 const int MAX = 5e5 + 10;
 
-int a[MAX];
+ll a[MAX];
 
 class SegTree {
 private:
     const static int MAXN = 5e5 * 4 + 10;
-    int lazy[MAXN], tree[MAXN];
-    int tree_n;
+    ll lazy[MAXN], tree[MAXN];
+    ll tree_n;
 public:
     #define left (id<<1)
     #define right ((id<<1)|1)
@@ -24,7 +24,7 @@ public:
         lazy[right] += lazy[id];
         int mid = l + (r - l) / 2;
         tree[left] += lazy[id] * (mid - l + 1);
-        tree[right] += lazy[id] * (r - (mid + 1) - 1);
+        tree[right] += lazy[id] * (r - (mid + 1) + 1);
         lazy[id] = 0;
     }
     void reset(int id, int l, int r) {
@@ -44,7 +44,7 @@ public:
         this->tree_n = n;
         reset(1, 1, tree_n);
     }
-    void update(int id, int l, int r, int u, int v, int val) {
+    void update(int id, int l, int r, int u, int v, ll val) {
         if ( l > v || r < u ) return;
         if ( l >= u && r <= v) {
             lazy[id] += val;
@@ -57,10 +57,10 @@ public:
         update(right, mid + 1, r, u, v, val);
         tree[id] = tree[left] + tree[right];
     }
-    void update(int u, int v, int val) {
+    void update(int u, int v, ll val) {
         update(1, 1, tree_n, u, v, val);
     }
-    int get(int id, int l, int r, int u, int v) {
+    ll get(int id, int l, int r, int u, int v) {
         if ( l > v || r < u) return 0;
         if ( l >= u && r <= v ) {
             return tree[id];
@@ -70,13 +70,12 @@ public:
         return (get(left, l, mid, u, v)
                 + get(right, mid + 1, r, u, v));
     }
-    int get(int u, int v) {
+    ll get(int u, int v) {
         return get(1, 1, tree_n, u, v);
     }
 };
 
-ll n, m, k, t;
-ll streak, cur, res;
+ll n, streak, cur, res;
 string s;
 SegTree IT;
 

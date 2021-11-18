@@ -58,12 +58,35 @@ struct dsu {
 
 /// ANNOUNCE: end of template
 
+struct Line {
+    ll k, m, p;
+    bool operator < (const Line &o) const {
+        return k < o.k;
+    }
+    bool operator < (ll x) const {
+        return p < x;
+    }
+    ll get(ll x) {
+        return k * x + m;
+    }
+};
+
+const ll inf = LLONG_MAX;
+int n; 
+ll c;
+deque<Line> hull;
+vectro<ll> h, dp;
+
 void solve() {
-    
+    read(n,C);
+    for (int i=1;i<=n;++i) {
+        read(h[i]);
+    }
 }
 
 int main() {
-    int tc; cin >> tc;
+    ios::sync_with_stdio(false); cin.tie(0);
+    int tc = 1;
     while (tc--) {
         solve();
     }

@@ -59,7 +59,17 @@ struct dsu {
 /// ANNOUNCE: end of template
 
 void solve() {
-    
+    string keyboard,wordin; cin >> keyboard >> wordin;
+    int j = 0, res = 0,prev = 0;
+    for (int i=0;i<wordin.size();++i) {
+        if (keyboard.find(wordin[i]) != string::npos) {
+            int idx = keyboard.find(wordin[i]);
+            //cout << idx << ' ';
+            res += abs(prev-idx); j++; prev = idx;
+            //cout << res << '\n';
+        }
+    }
+    cout << res-keyboard.find(wordin[0]) << '\n';
 }
 
 int main() {
